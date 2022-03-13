@@ -20,6 +20,8 @@ namespace monetka_SHITat_
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Summa summa;
+        private Euro euro;
         public MainWindow()
         {
             InitializeComponent();
@@ -27,10 +29,23 @@ namespace monetka_SHITat_
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            double x = double.Parse(NominalKypyr.Text);
-            double y = double.Parse(KolvoKypyr.Text);
-            double a = x * y;
-            Result.Text = $"Сумма купюр равна: {a}";
+            summa = new Summa(double.Parse(NominalKypyr.Text),
+                              double.Parse(KolvoKypyr.Text));
+            Result.Text = summa.Print();
+        }
+
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            euro = new Euro(double.Parse(NominalKypyr.Text),
+                            double.Parse(KolvoKypyr.Text));
+            Result2.Text = euro.Print();
         }
     }
+
+
+
+    //double x = double.Parse(NominalKypyr.Text);
+    //double y = double.Parse(KolvoKypyr.Text);
+    //double a = x * y;
+    //Result.Text = $"Сумма купюр равна: {a}";
 }
